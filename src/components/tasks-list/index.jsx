@@ -12,7 +12,7 @@ const TaskList = ({ tasks = [] }) => {
     tasks.map((task) => <Task task={task} key={task.id} />)
   ) : (
     <div className={classes.title}>
-      <Typography variant="h5">
+      <Typography variant="p">
         There aren't task in your list
     </Typography>
     </div>
