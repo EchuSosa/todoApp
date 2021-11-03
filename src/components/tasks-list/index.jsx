@@ -1,3 +1,5 @@
+/* eslint-disable no-extra-boolean-cast */
+/* eslint-disable react/prop-types */
 import React from "react";
 
 import Typography from '@mui/material/Typography';
@@ -13,7 +15,7 @@ const TaskList = ({ tasks = [] }) => {
   ) : (
     <div className={classes.title}>
       <Typography variant="p">
-        There aren't task in your list
+        There aren&apos;t tasks in your list
     </Typography>
     </div>
 
