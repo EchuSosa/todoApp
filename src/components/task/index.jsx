@@ -8,14 +8,13 @@ import Typography from '@mui/material/Typography';
 import { useStyles } from "./styles";
 import Dialog from '../alert-dialog'
 
-import TasksService from "../../services/taskServices";
 import { useTasks } from "../../context/tasks-context";
 
 export default function Task({ task }) {
     const { id, title } = task;
     const classes = useStyles();
     const [open, setOpen] = useState(false);
-    const { setTasks } = useTasks();
+    const { tasks, setTasks } = useTasks();
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -26,10 +25,7 @@ export default function Task({ task }) {
     };
 
     const handleComplete = () => {
-        const updatedTask = TasksService.INSTANCE.delete(task?.id);
-        if (updatedTask) {
-          setTasks(TasksService.INSTANCE.getAll());
-        }
+        setTasks(tasks.filter((task) => task.id !== id));
     };
 
     return (
@@ -37,7 +33,7 @@ export default function Task({ task }) {
             <Dialog
                 open={open}
                 handleClose={handleClose}
-                task={{id,title}}
+                task={{ id, title }}
                 handleComplete={handleComplete}
             />
             <Card sx={{ maxWidth: 275 }} className={classes.root} onClick={handleClickOpen} >

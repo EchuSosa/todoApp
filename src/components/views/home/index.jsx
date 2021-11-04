@@ -7,6 +7,7 @@ import { useStyles } from "./styles";
 
 import { useTasks } from "../../../context/tasks-context";
 import TasksService from "../../../services/taskServices";
+import { createRandomTasks } from '../../../utils'
 
 import TaskList from "../../tasks-list";
 
@@ -14,10 +15,9 @@ const Home = () => {
     const { tasks, setTasks } = useTasks();
     const classes = useStyles();
 
-    const setDataTasks = () => {
-        const tasks = TasksService.INSTANCE.getAll();
-        setTasks(tasks);
-
+    const setDataTasks = async () => {
+        const titles = await TasksService.INSTANCE.getTitlesFromApi();
+        setTasks(createRandomTasks(titles));
     };
 
     useEffect(() => {
