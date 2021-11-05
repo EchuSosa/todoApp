@@ -16,7 +16,7 @@ const Home = () => {
     const classes = useStyles();
 
     const setDataTasks = async () => {
-        const titles = await TasksService.INSTANCE.getTitlesFromApi();
+        const titles = await TasksService.INSTANCE.getTitlesFromApi(10);
         setTasks(createRandomTasks(titles));
     };
 
@@ -25,7 +25,7 @@ const Home = () => {
         // eslint-disable-next-line
     }, []);
 
-    const amountOfTasksText = `${tasks.length > 1 ? 'are': 'is'} ${tasks.length} ${tasks.length > 1 ? 'tasks': 'task'}`
+    const amountOfTasksText = `${tasks.length > 1 ? 'are' : 'is'} ${tasks.length} ${tasks.length > 1 ? 'tasks' : 'task'}`
 
     return (
         <Paper className={classes.root}>
@@ -33,13 +33,13 @@ const Home = () => {
                 <Typography variant="h4">
                     What&apos;s the Plan for today?
                 </Typography>
-                {!!tasks.length && 
+                {!!tasks.length &&
                     <Typography variant="p">
                         There {amountOfTasksText} to resolve
                     </Typography>
                 }
             </div>
-            <Grid container justifyContent="center">
+            <Grid container>
                 <TaskList tasks={tasks} />
             </Grid>
         </Paper>

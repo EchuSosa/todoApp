@@ -36,12 +36,12 @@ export default function Task({ task }) {
                 task={{ id, title }}
                 handleComplete={handleComplete}
             />
-            <Card sx={{ maxWidth: 275 }} className={classes.root} onClick={handleClickOpen} >
-                <CardContent>
-                    <Typography variant="h5" component="div">
+            <Card className={classes.root} onClick={handleClickOpen} >
+                <CardContent sx={{ height: 50 }}>
+                    <Typography variant="h5" noWrap>
                         Task #{id}
                     </Typography>
-                    <Typography variant="h6" component="div">
+                    <Typography variant="h6" noWrap>
                         {title}
                     </Typography>
                 </CardContent>
